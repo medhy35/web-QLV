@@ -1,0 +1,57 @@
+{
+  "nav": {
+    "voyage": "Travel",
+    "food": "Food",
+    "reels": "Reels",
+    "bonsPlan": "Deals",
+    "about": "About"
+  },
+  "hero": {
+    "ctaVoyage": "Explore the world",
+    "ctaFood": "Discover food"
+  },
+  "newsletter": {
+    "title": "Join the community",
+    "subtitle": "Once a week: an article, a food spot, a good deal.",
+    "placeholder": "Your email address",
+    "cta": "Subscribe",
+    "success": "Thank you! Check your inbox to confirm.",
+    "error": "Something went wrong. Please try again.",
+    "consent": "Double opt-in required. Unsubscribe anytime."
+  },
+  "article": {
+    "readingTime": "{min} min read",
+    "tableOfContents": "Contents",
+    "shareTitle": "Share",
+    "relatedTitle": "Read next",
+    "affiliateDisclaimer": "This article contains affiliate links.",
+    "backToTop": "Back to top"
+  },
+  "filters": {
+    "all": "All",
+    "recent": "Most recent",
+    "popular": "Most popular",
+    "oldest": "Oldest",
+    "articles": "{count} articles",
+    "reels": "{count} reels"
+  },
+  "reels": {
+    "featured": "Featured",
+    "watchReel": "Watch Reel"
+  },
+  "bonsPlan": {
+    "title": "Deals",
+    "subtitle": "My recommendations to travel and eat better.",
+    "discover": "Discover"
+  },
+  "about": {
+    "title": "About",
+    "partnerships": "Partnerships",
+    "contactCta": "Work together"
+  },
+  "errors": {
+    "notFound": "Page not found",
+    "notFoundSub": "This page doesn't exist or has been moved.",
+    "backHome": "Back to home"
+  }
+}

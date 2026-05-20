@@ -1,0 +1,57 @@
+{
+  "nav": {
+    "voyage": "Voyage",
+    "food": "Food",
+    "reels": "Reels",
+    "bonsPlan": "Bons Plans",
+    "about": "À propos"
+  },
+  "hero": {
+    "ctaVoyage": "Explorer le monde",
+    "ctaFood": "Découvrir la food"
+  },
+  "newsletter": {
+    "title": "Rejoindre la communauté",
+    "subtitle": "Une fois par semaine : un article, une adresse food, un bon plan.",
+    "placeholder": "Votre adresse email",
+    "cta": "S'abonner",
+    "success": "Merci ! Vérifiez votre boîte mail pour confirmer.",
+    "error": "Une erreur est survenue. Réessayez.",
+    "consent": "Double opt-in requis. Désinscription possible à tout moment."
+  },
+  "article": {
+    "readingTime": "{min} min de lecture",
+    "tableOfContents": "Sommaire",
+    "shareTitle": "Partager",
+    "relatedTitle": "À lire aussi",
+    "affiliateDisclaimer": "Cet article contient des liens affiliés.",
+    "backToTop": "Retour en haut"
+  },
+  "filters": {
+    "all": "Tout",
+    "recent": "Plus récents",
+    "popular": "Plus populaires",
+    "oldest": "Plus anciens",
+    "articles": "{count} articles",
+    "reels": "{count} reels"
+  },
+  "reels": {
+    "featured": "À la une",
+    "watchReel": "Voir le Reel"
+  },
+  "bonsPlan": {
+    "title": "Bons Plans",
+    "subtitle": "Mes recommandations pour voyager et manger mieux.",
+    "discover": "Découvrir"
+  },
+  "about": {
+    "title": "À propos",
+    "partnerships": "Partenariats",
+    "contactCta": "Travailler ensemble"
+  },
+  "errors": {
+    "notFound": "Page introuvable",
+    "notFoundSub": "Cette page n'existe pas ou a été déplacée.",
+    "backHome": "Retour à l'accueil"
+  }
+}
