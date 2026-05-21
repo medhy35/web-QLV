@@ -74,5 +74,48 @@ export const siteConfig = defineType({
         { name: 'en', type: 'text', rows: 6 },
       ],
     }),
+
+    // — Galerie homepage —
+    defineField({
+      name: 'galleryPhotos',
+      title: 'Galerie photos (Homepage)',
+      type: 'array',
+      description: 'Photos affichées en mosaïque sur la homepage. 4 à 8 photos recommandées.',
+      of: [
+        {
+          type: 'object',
+          name: 'galleryPhoto',
+          fields: [
+            defineField({ name: 'image', title: 'Photo', type: 'image', options: { hotspot: true } }),
+            defineField({
+              name: 'caption',
+              title: 'Légende (optionnel)',
+              type: 'object',
+              fields: [
+                { name: 'fr', type: 'string', title: 'Français' },
+                { name: 'en', type: 'string', title: 'Anglais' },
+              ],
+            }),
+            defineField({
+              name: 'category',
+              title: 'Catégorie',
+              type: 'string',
+              options: {
+                list: [
+                  { title: 'Voyage', value: 'voyage' },
+                  { title: 'Food', value: 'food' },
+                ],
+                layout: 'radio',
+              },
+              initialValue: 'voyage',
+            }),
+          ],
+          preview: {
+            select: { media: 'image', title: 'caption.fr', subtitle: 'category' },
+          },
+        },
+      ],
+      validation: (r) => r.max(8),
+    }),
   ],
 })

@@ -3,6 +3,7 @@ import { HOMEPAGE_QUERY } from '@/lib/sanity/queries'
 import HeroSection from '@/components/sections/HeroSection'
 import FeaturedArticles from '@/components/sections/FeaturedArticles'
 import PillarSection from '@/components/sections/PillarSection'
+import PhotoGrid from '@/components/sections/PhotoGrid'
 import AffiliateSection from '@/components/sections/AffiliateSection'
 import NewsletterSection from '@/components/sections/NewsletterSection'
 
@@ -34,6 +35,10 @@ export default async function HomePage({ params }: Props) {
       )}
 
       <PillarSection locale={locale} />
+
+      {config?.galleryPhotos?.length > 0 && (
+        <PhotoGrid photos={config.galleryPhotos} locale={locale} />
+      )}
 
       {data?.affiliates?.length > 0 && (
         <AffiliateSection items={data.affiliates} locale={locale} />

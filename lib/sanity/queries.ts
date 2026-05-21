@@ -5,11 +5,18 @@ export const HOMEPAGE_QUERY = `{
     newsletterSubtitle,
     "featuredArticles": featuredArticles[]-> {
       _id, title, slug, pillar, tags, publishedAt, coverImage, excerpt
+    },
+    "galleryPhotos": galleryPhotos[] {
+      image, caption, category
     }
   },
   "affiliates": *[_type == "affiliateItem" && featured == true] | order(_createdAt desc) [0...4] {
     _id, partner, name, url, destination, price, image
   }
+}`
+
+export const POPUP_QUERY = `*[_type == "popup"][0] {
+  active, title, text, image, buttonLabel, buttonUrl, expiresAt
 }`
 
 export const ARTICLES_QUERY = `*[_type == "article" && pillar == $pillar] | order(publishedAt desc) {
