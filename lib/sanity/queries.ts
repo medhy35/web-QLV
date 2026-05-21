@@ -32,3 +32,9 @@ export const REELS_QUERY = `*[_type == "reel"] | order(publishedAt desc) {
 export const AFFILIATE_QUERY = `*[_type == "affiliateItem"] | order(_createdAt desc) {
   _id, partner, name, url, destination, price, image, featured
 }`
+
+export const ABOUT_QUERY = `*[_type == "siteConfig"][0] {
+  aboutPhoto, aboutName,
+  "aboutIntro": aboutIntro,
+  "aboutBio": aboutBio
+}`
