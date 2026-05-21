@@ -27,9 +27,18 @@ export default function PopupBanner({ data, locale }: Props) {
     // Vérifier si le popup a expiré
     if (data.expiresAt && new Date(data.expiresAt) < new Date()) return
 
-    // Afficher immédiatement
+    // Ne montrer qu'une seule fois par session de navigation (onglet)
+    const SESSION_KEY = 'wb_popup_seen'
+    if (sessionStorage.getItem(SESSION_KEY)) return
+
     setVisible(true)
   }, [data])
+
+  // Fermeture : marquer comme vu pour toute la session
+  const handleClose = () => {
+    sessionStorage.setItem('wb_popup_seen', '1')
+    setVisible(false)
+  }
 
   if (!visible || !data?.active) return null
 
@@ -48,7 +57,7 @@ export default function PopupBanner({ data, locale }: Props) {
     // Backdrop
     <div
       className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
-      onClick={() => setVisible(false)}
+      onClick={handleClose}
       role="dialog"
       aria-modal="true"
       aria-label={title ?? 'Annonce'}
@@ -60,7 +69,7 @@ export default function PopupBanner({ data, locale }: Props) {
       >
         {/* Bouton fermeture */}
         <button
-          onClick={() => setVisible(false)}
+          onClick={handleClose}
           className="absolute top-4 right-4 z-10 text-[#faf9f6]/40 hover:text-[#faf9f6] transition-colors"
           aria-label={l === 'fr' ? 'Fermer' : 'Close'}
         >
@@ -107,7 +116,7 @@ export default function PopupBanner({ data, locale }: Props) {
               href={data.buttonUrl}
               target={data.buttonUrl.startsWith('http') ? '_blank' : undefined}
               rel={data.buttonUrl.startsWith('http') ? 'noopener noreferrer' : undefined}
-              onClick={() => setVisible(false)}
+              onClick={handleClose}
               className="block text-center py-3 px-6 border border-[#c9a96e]/50 text-[#c9a96e] text-xs uppercase tracking-widest hover:bg-[#c9a96e] hover:text-[#0d0b09] transition-all duration-300"
             >
               {btnLabel}
@@ -116,7 +125,7 @@ export default function PopupBanner({ data, locale }: Props) {
 
           {/* Lien fermeture discret */}
           <button
-            onClick={() => setVisible(false)}
+            onClick={handleClose}
             className="block w-full text-center mt-4 text-[10px] text-[#faf9f6]/25 hover:text-[#faf9f6]/50 transition-colors uppercase tracking-widest"
           >
             {l === 'fr' ? 'Non merci' : 'No thanks'}
