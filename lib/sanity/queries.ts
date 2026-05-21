@@ -5,11 +5,18 @@ export const HOMEPAGE_QUERY = `{
     newsletterSubtitle,
     "featuredArticles": featuredArticles[]-> {
       _id, title, slug, pillar, tags, publishedAt, coverImage, excerpt
+    },
+    "galleryPhotos": galleryPhotos[] {
+      image, caption, category
     }
   },
   "affiliates": *[_type == "affiliateItem" && featured == true] | order(_createdAt desc) [0...4] {
     _id, partner, name, url, destination, price, image
   }
+}`
+
+export const POPUP_QUERY = `*[_type == "popup"][0] {
+  active, title, text, image, buttonLabel, buttonUrl, expiresAt
 }`
 
 export const ARTICLES_QUERY = `*[_type == "article" && pillar == $pillar] | order(publishedAt desc) {
@@ -31,4 +38,10 @@ export const REELS_QUERY = `*[_type == "reel"] | order(publishedAt desc) {
 
 export const AFFILIATE_QUERY = `*[_type == "affiliateItem"] | order(_createdAt desc) {
   _id, partner, name, url, destination, price, image, featured
+}`
+
+export const ABOUT_QUERY = `*[_type == "siteConfig"][0] {
+  aboutPhoto, aboutName,
+  "aboutIntro": aboutIntro,
+  "aboutBio": aboutBio
 }`

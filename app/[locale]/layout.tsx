@@ -3,8 +3,11 @@ import { getMessages } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { routing } from '@/i18n/routing'
+import { client } from '@/lib/sanity/client'
+import { POPUP_QUERY } from '@/lib/sanity/queries'
 import Nav from '@/components/layout/Nav'
 import Footer from '@/components/layout/Footer'
+import PopupBanner, { type PopupData } from '@/components/ui/PopupBanner'
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }))
@@ -42,10 +45,17 @@ export default async function LocaleLayout({
     notFound()
   }
 
-  const messages = await getMessages()
+  const [messages, popup] = await Promise.all([
+    getMessages(),
+    client
+      .fetch(POPUP_QUERY, {}, { next: { revalidate: 60 } })
+      .catch(() => null) as Promise<PopupData | null>,
+  ])
 
   return (
     <NextIntlClientProvider messages={messages}>
+      {/* Popup global — visible sur toutes les pages si actif */}
+      {popup?.active && <PopupBanner data={popup} locale={locale} />}
       <Nav />
       <main>{children}</main>
       <Footer />
